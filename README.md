@@ -8,7 +8,7 @@ Ziel: Erstellen einer Website die aktuelle Wettbewerbe auflistet, um die Teilnah
 - - E-Mail: 
 - - Telefon:
 - Emil Rubasch, 
-- - E-Mail:  40146820220048@litec.ac.at
+- - E-Mail:  40146720220048@litec.ac.at
 - - Telefon: +43 0677 63661489
 - David Galateanu
 - - E-Mail: 
