@@ -60,4 +60,10 @@ Schulen erhalten Benachrichtigungen zu baldigen Wettbewerbsfristen.
 - Mehrsprachigkeit:
 Option für mehrere Sprachen, wenn Schulen in verschiedenen Regionen arbeiten.
 
+## Random Notes:
+
+- autoscroll wenn man oben bei der navbar auf reiter klickt
+- loginscreen für lehrkräfte um mehr wettbewerbe hinzuzufügen
+- mehrere Reiter, wo zb. Kategorie(Roboter,coding, Sport,..), Fachrichtung(IT, Kunst, Design,..) und Schulstufe(Oberstufe(5-9),Unterstufe(1-4), Volkschule)
+
 
