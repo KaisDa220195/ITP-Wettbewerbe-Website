@@ -35,7 +35,7 @@ Eine Monatsübersicht mit wichtigen Wettbewerbsfristen.
 - Responsive Design:
 Für Desktop, Tablets und Smartphones optimiert.
 
--Einbettung:
+- Einbettung:
 Einfacher HTML-Code oder Plugin, um die Seite in bestehende Schul-Webseiten einzubetten.
 
 ### Design
@@ -50,5 +50,14 @@ Karten-Layout: Jede Wettbewerbskarte zeigt Name, kurze Beschreibung, Frist und Z
 - Icons und Bilder:
 Symbole und Bilder, die zu den Kategorien passen (z. B. Medaillen, Bücher, Computer).
 
+### Funktionen für Schulen
+- Einfaches Dashboard:
+Schulen loggen sich ein, um Wettbewerbe hinzuzufügen (Titel, Beschreibung, Frist, Links etc.).
+
+- Automatische Erinnerungen:
+Schulen erhalten Benachrichtigungen zu baldigen Wettbewerbsfristen.
+
+- Mehrsprachigkeit:
+Option für mehrere Sprachen, wenn Schulen in verschiedenen Regionen arbeiten.
 
 
