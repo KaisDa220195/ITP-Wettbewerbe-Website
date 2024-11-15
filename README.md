@@ -1,7 +1,7 @@
 # ITP-Wettbewerbe-Website
 
-Wettbewerb Verteilung Website
-Ziel: Erstellen einer Website die aktuelle Wettbewerbe auflistet, um die Teilnahme von Schüler*innen an Schulen zu erhöhen. Diese soll für Schulen leichte Bearbeitung erlauben und mit einem modernen Design& Layout ausgestattet werden. Diese kann anschließend in Webseiten eingebaut werden.
+Wettbewerbe Website
+Ziel: Erstellen einer Website die aktuelle Wettbewerbe auflistet, um die Teilnahme von Schüler*innen an Schulen zu erhöhen. Diese soll für Schulen leichte Bearbeitung erlauben und mit einem modernen Design und Layout ausgestattet werden. Diese kann anschließend in Webseiten eingebaut werden.
 
 ### Teilnehmer
 - Daniel Kaiser
