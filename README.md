@@ -66,4 +66,4 @@ Option für mehrere Sprachen, wenn Schulen in verschiedenen Regionen arbeiten.
 - loginscreen für lehrkräfte um mehr wettbewerbe hinzuzufügen
 - mehrere Reiter, wo zb. Kategorie(Roboter,coding, Sport,..), Fachrichtung(IT, Kunst, Design,..) und Schulstufe(Oberstufe(5-9),Unterstufe(1-4), Volkschule)
 
-
+### Nachhaltigkeit
