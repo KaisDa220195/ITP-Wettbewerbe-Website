@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITP-Kalender</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        header {
+            background-color: #0047AB;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        nav {
+            background-color: #003366;
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 15px;
+        }
+
+        nav a:hover {
+            background-color: #00509E;
+            border-radius: 5px;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            text-align: center;
+        }
+
+        .calendar {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .calendar-header button {
+            background-color: #0047AB;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        .calendar-header button:hover {
+            background-color: #00509E;
+        }
+
+        .calendar-header h2 {
+            margin: 0;
+        }
+
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            margin-top: 20px;
+        }
+
+        .calendar-day {
+            padding: 15px;
+            background: #f1f1f1;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .calendar-day:hover {
+            background: #d3e5ff;
+        }
+
+        .calendar-day.event {
+            background: #b3d7ff;
+            color: white;
+        }
+
+        .calendar-day span {
+            display: block;
+            font-size: 0.9rem;
+        }
+
+        .calendar-day h4 {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .events-list {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .events-list h3 {
+            margin-bottom: 10px;
+        }
+
+        .events-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .events-list li {
+            padding: 10px;
+            background: #f1f1f1;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: #0047AB;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Kalender</h1>
+        <p>Termine der nächsten Wettbewerbe</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Kategorien</a>
+        <a href="#">Kalender</a>
+        <a href="wettbewerbeEinreichen.html">Wettbewerb einreichen</a>
+    </nav>
+    <div class="calendar">
+        <div class="calendar-header">
+            <button id="prev-month">&laquo; Vorheriger Monat</button>
+            <h2 id="month-year">Januar 2025</h2>
+            <button id="next-month">Nächster Monat &raquo;</button>
+        </div>
+        <div class="calendar-days" id="calendar-days">
+            <!-- Tage werden hier per JavaScript generiert -->
+        </div>
+    </div>
+    <div class="events-list">
+        <h3>Geplante Wettbewerbe:</h3>
+        <ul id="events-list">
+            <!-- Events werden hier angezeigt -->
+        </ul>
+    </div>
+
+    <script>
+        const events = {
+            '2025-01-15': ['Roboter Challenge - Anmeldung endet'],
+            '2025-01-20': ['Kreatives Schreiben Wettbewerb'],
+            '2025-01-25': ['Mathematik Olympiade'],
+        };
+
+        const daysInMonth = (month, year) => new Date(year, month + 1, 0).getDate();
+
+        const renderCalendar = (month, year) => {
+            const calendarDays = document.getElementById('calendar-days');
+            const monthYear = document.getElementById('month-year');
+
+            const monthNames = [
+                'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
+                'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'
+            ];
+
+            calendarDays.innerHTML = '';
+            monthYear.textContent = `${monthNames[month]} ${year}`;
+
+            const firstDay = new Date(year, month, 1).getDay();
+            const totalDays = daysInMonth(month, year);
+
+            for (let i = 0; i < firstDay; i++) {
+                calendarDays.innerHTML += '<div></div>';
+            }
+
+            for (let day = 1; day <= totalDays; day++) {
+                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const dayDiv = document.createElement('div');
+                dayDiv.className = 'calendar-day';
+                if (events[dateStr]) {
+                    dayDiv.classList.add('event');
+                }
+
+                dayDiv.innerHTML = `<h4>${day}</h4><span>${events[dateStr] ? events[dateStr][0] : ''}</span>`;
+                calendarDays.appendChild(dayDiv);
+            }
+        };
+
+        const updateEventsList = (month, year) => {
+            const eventsList = document.getElementById('events-list');
+            eventsList.innerHTML = '';
+
+            for (const [date, eventList] of Object.entries(events)) {
+                const [eventYear, eventMonth] = date.split('-');
+                if (parseInt(eventMonth) - 1 === month && parseInt(eventYear) === year) {
+                    eventList.forEach(event => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = `${date}: ${event}`;
+                        eventsList.appendChild(listItem);
+                    });
+                }
+            }
+        };
+
+        const currentDate = new Date();
+        let currentMonth = currentDate.getMonth();
+        let currentYear = currentDate.getFullYear();
+
+        document.getElementById('prev-month').addEventListener('click', () => {
+            currentMonth -= 1;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear -= 1;
+            }
+            renderCalendar(currentMonth, currentYear);
+            updateEventsList(currentMonth, currentYear);
+        });
+
+        document.getElementById('next-month').addEventListener('click', () => {
+            currentMonth += 1;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear += 1;
+            }
+            renderCalendar(currentMonth, currentYear);
+            updateEventsList(currentMonth, currentYear);
+        });
+
+        renderCalendar(currentMonth, currentYear);
+        updateEventsList(currentMonth, currentYear);
+    </script>
+
+<footer>
+    <p>© 2025 ITP Wettbewerbe - Kontakt: <a href="mailto:info@itp-wettbewerbe.at" style="color: white;">info@itp-wettbewerbe.at</a></p>
+</footer>
+</body>
+</html>
