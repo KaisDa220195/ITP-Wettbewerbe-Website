@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITP Wettbewerbe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #0047AB;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        nav {
+            background-color: #003366;
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 15px;
+        }
+
+        nav a:hover {
+            background-color: #00509E;
+            border-radius: 5px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 10px;
+        }
+
+        .competition-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .competition-card h3 {
+            margin-top: 0;
+        }
+
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .filters select {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        footer {
+            background-color: #0047AB;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+            }
+
+            .filters {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>WettbewerbFinder</h1>
+        <p>Förderung der Teilnahme von Schüler*innen an spannenden Wettbewerben</p>
+    </header>
+
+    <nav>
+        <a href="#">Kategorien</a>
+        <a href="#">Kalender</a>
+        <a href="#">Wettbewerb einreichen</a>
+    </nav>
+
+    <div class="container">
+        <div class="filters">
+            <select name="category" id="category">
+                <option value="">Kategorie wählen</option>
+                <option value="robotics">Roboter</option>
+                <option value="coding">Coding</option>
+                <option value="sport">Sport</option>
+            </select>
+
+            <select name="level" id="level">
+                <option value="">Schulstufe wählen</option>
+                <option value="elementary">Volksschule</option>
+                <option value="lower-secondary">Unterstufe</option>
+                <option value="upper-secondary">Oberstufe</option>
+            </select>
+
+            <input type="text" placeholder="Wettbewerb suchen..." style="flex: 1; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+        </div>
+
+        <div class="competition-card">
+            <h3>Programmieren für die Zukunft</h3>
+            <p><strong>Kategorie:</strong> Coding</p>
+            <p><strong>Frist:</strong> 30. März 2025</p>
+            <p><strong>Zielgruppe:</strong> Oberstufe</p>
+        </div>
+
+        <div class="competition-card">
+            <h3>Kreatives Schreiben</h3>
+            <p><strong>Kategorie:</strong> Kunst</p>
+            <p><strong>Frist:</strong> 15. April 2025</p>
+            <p><strong>Zielgruppe:</strong> Unterstufe</p>
+        </div>
+
+        <div class="competition-card">
+            <h3>Robotik Challenge</h3>
+            <p><strong>Kategorie:</strong> Roboter</p>
+            <p><strong>Frist:</strong> 10. Mai 2025</p>
+            <p><strong>Zielgruppe:</strong> Alle Schulstufen</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 ITP Wettbewerbe - Kontakt: <a href="mailto:info@itp-wettbewerbe.at" style="color: white;">info@itp-wettbewerbe.at</a></p>
+    </footer>
+</body>
+</html>
