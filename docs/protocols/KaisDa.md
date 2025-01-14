@@ -4,8 +4,6 @@
 
   Erste Entwicklung vom Datenbank Schema. Bezihung zwischen  Competitions und Year. Anmeldung zum NextGeneration Wettbewerb.
 
-
-
 ### 04.01.2025
 
 Datenbank weiter entwickelt:

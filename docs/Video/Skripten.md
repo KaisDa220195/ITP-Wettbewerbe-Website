@@ -86,13 +86,13 @@ Ob Anfänger oder Matheprofi – hier ist für jeden etwas dabei. Zeigt, was ihr
 
 ------------------
 
-**Coding & Creative Challenges (CCC)**
+**Cloudfight Coding Contest**
 
 - **Anmeldeschluss:** 10. März 2025
 - **Wettbewerbstermin:** 5. bis 6. April 2025 in Linz
 - **Preisverleihung:** 7. April 2025
 
-"Willkommen zu den *Coding & Creative Challenges* – dem Wettbewerb für digitale Innovation und kreative Problemlösungen!
+"Willkommen beim *Cloudfight Coding Contest* – dem Wettbewerb für digitale Innovation und kreative Problemlösungen!
 
 Hier treffen sich kreative Köpfe, Entwicklerinnen und Designerinnen, um in interdisziplinären Teams an spannenden Aufgaben zu arbeiten. Ob Apps, Spiele, Algorithmen oder visionäre digitale Konzepte – die CCC stehen für technisches Know-how, kreative Lösungen und kollaboratives Denken.
 
