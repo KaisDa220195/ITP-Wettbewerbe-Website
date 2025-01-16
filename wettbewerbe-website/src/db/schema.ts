@@ -16,12 +16,12 @@ export const schoolYear = pgTable("schoolYear", {
 export const competitionYear = pgTable("competitionYear", {
   
   compYear: varchar({length: 5}),
-  compName: varchar({length:255}),
+  compID: integer(),
 
   }, (table) => {//creates composite primar key out of the years it takes palce in and the name of the competition
     return [{
-      pk: primaryKey({ columns: [table.compYear, table.compName] }),
-      pkWithCustomName: primaryKey({ name: 'competitionYear', columns: [table.compYear, table.compName] }),
+      pk: primaryKey({ columns: [table.compYear, table.compID] }),
+      pkWithCustomName: primaryKey({ name: 'competitionYear', columns: [table.compYear, table.compID] }),
     }];
 });
 
@@ -40,7 +40,7 @@ export const compYearRelations = relations(competitionYear, ({ one }) => ({
   
   //Relation to which competition it belongs to
   compName: one(competition,{
-    fields: [competitionYear.compName],
+    fields: [competitionYear.compID],
     references: [competition.name],
   })
 }));
