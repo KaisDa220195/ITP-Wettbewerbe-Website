@@ -19,3 +19,11 @@ Dauer: 1.5h
 13:00 - 15:00
 
 - React basierte Website mit Header und Footer Komponenten erstellt
+
+## 16.01.2025
+
+19:00 - 20:00  
+
+- Test Daten in die Datenbank importiert 
+
+- Backend Struktur und standort überlegt

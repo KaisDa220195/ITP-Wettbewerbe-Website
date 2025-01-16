@@ -2,30 +2,26 @@ import { integer, pgTable, varchar,text,primaryKey } from "drizzle-orm/pg-core";
 import {relations } from "drizzle-orm";
 
 export const competition = pgTable("competition", {
-  id: integer().primaryKey().generatedAlwaysAsIdentity(),
+  id: integer().primaryKey(),
   name: varchar({ length: 255 }).notNull(),
   description: text(),
 });
 
 export const schoolYear = pgTable("schoolYear", {
-//In Format YY/YY to show the year the school year started in and in which it ended
-  years: varchar({length: 5}).primaryKey(),
+//In Format YY/YY to show the year the school year started in and in which it ended -> Jahrgang
+  id: integer().primaryKey(),
+  years: varchar({length: 5}),
 
 });
 
 export const competitionYear = pgTable("competitionYear", {
-  
+  id: integer().primaryKey(),
+
   compYear: varchar({length: 5}),
-  compID: integer(),
+  compId: integer(),
 
-  }, (table) => {//creates composite primar key out of the years it takes palce in and the name of the competition
-    return [{
-      pk: primaryKey({ columns: [table.compYear, table.compID] }),
-      pkWithCustomName: primaryKey({ name: 'competitionYear', columns: [table.compYear, table.compID] }),
-    }];
-});
-
-
+  }
+);
 
 
 //RELATIONS
@@ -33,15 +29,15 @@ export const competitionYear = pgTable("competitionYear", {
 
 export const compYearRelations = relations(competitionYear, ({ one }) => ({
   //Relation to the school year in which it takes place
-  compyear: one(schoolYear, {
+  compYear: one(schoolYear, {
     fields: [competitionYear.compYear],
-    references: [schoolYear.years],
+    references: [schoolYear.id],
   }),
   
   //Relation to which competition it belongs to
   compName: one(competition,{
-    fields: [competitionYear.compID],
-    references: [competition.name],
+    fields: [competitionYear.compId],
+    references: [competition.id],
   })
 }));
 
