@@ -1,0 +1,29 @@
+ER Diagram
+
+Entitytyp: Competition
+Attribute: comp_id, Name, Description, lastRegistrationDate, lowestGrade, prefBranch
+Primärschlüssel: comp_id
+
+Entitytyp: User
+Attribute: user_id,e-mail , class, (Password), branch, isTeacher,(shortName)
+Name = foreName + lastName
+
+Primärschlüssel: comp_id
+
+Competition - User
+Beziehungstyp: interested in
+beteiligte Entitytypen: Competition, User
+Grad der Beziehung: 2
+Attribute der Beziehung: sign_up_date
+Konnektivität:  cn : cn
+Kardinalität: N : M
+Optionalität: Kann
+
+Competition - User
+Beziehungstyp: is contact
+beteiligte Entitytypen: Competition, User
+Grad der Beziehung: 2
+Attribute der Beziehung: 
+Konnektivität:  1 :cn
+Kardinalität: 1 : N
+Optionalität: Kann
