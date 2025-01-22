@@ -39,3 +39,11 @@ Dauer: 1.5h
 9:15 - 10 : 10
 
 - Datenbankschema in die Datenbank eingeführt
+
+13:00 - 15:30
+
+- Datenbank handler angefangen und tests gebildet
+
+20:30 - 21:00
+
+- Datenbankhandler weiter getestet

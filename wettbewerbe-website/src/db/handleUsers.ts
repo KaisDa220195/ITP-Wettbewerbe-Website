@@ -1,6 +1,6 @@
 "use server"
 import { db } from './index';
-import { user } from './schema';
+import { user,student } from './schema';
 
 
 export interface teacherStructure{
@@ -19,7 +19,12 @@ export interface studentStructure{
 
 export async function addStudent(student:studentStructure){
 
-    const data = await db.insert(user).values(student).returning();
+    const data = {
+        id: await db.insert(user).values({email:student.email,password:student.password}).returning({insertedid:user.user_id}),
+        branch: student.branch,
+        class: student.class,
+    }
+    await db.insert(student).values(data)
     console.log(data)
 }
 
