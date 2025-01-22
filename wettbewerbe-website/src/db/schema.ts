@@ -1,50 +1,40 @@
-import { integer, pgTable, varchar,text,primaryKey } from "drizzle-orm/pg-core";
+import { integer,smallint,boolean,date, pgTable, varchar,text,primaryKey } from "drizzle-orm/pg-core";
 import {relations } from "drizzle-orm";
 
 export const competition = pgTable("competition", {
-  id: integer().primaryKey(),
+  comp_id: integer().primaryKey(),
   name: varchar({ length: 255 }).notNull(),
   description: text(),
+  lastRegistrationDate: date("date", {mode: "date"}).notNull(),
+  lowestGrade: smallint(),
+  prefBranch: varchar({length:20}),
+  user_id: integer().references(()=>user.user_id)
 });
 
-export const schoolYear = pgTable("schoolYear", {
-//In Format YY/YY to show the year the school year started in and in which it ended -> Jahrgang
-  id: integer().primaryKey(),
-  years: varchar({length: 5}),
-
+export const user = pgTable("user",{
+  user_id: integer().primaryKey(),
+  email: varchar({length: 255}).notNull(),
+  password: varchar({length:255}),
+  
 });
 
-export const competitionYear = pgTable("competitionYear", {
-  id: integer().primaryKey(),
+export const teacher = pgTable("teacher",{
+  user_id: integer().references(()=>user.user_id).primaryKey(),
+  shortName: varchar({length: 10})
+});
 
-  compYear: varchar({length: 5}),
-  compId: integer(),
+export const student = pgTable("student",{
+  user_id: integer().references(()=>user.user_id).primaryKey(),
+  branch: varchar({length:50}),
+  class: varchar({length:10}),
 
-  }
-);
-
+});
 
 //RELATIONS
 
-
-export const compYearRelations = relations(competitionYear, ({ one }) => ({
-  //Relation to the school year in which it takes place
-  compYear: one(schoolYear, {
-    fields: [competitionYear.compYear],
-    references: [schoolYear.id],
-  }),
-  
-  //Relation to which competition it belongs to
-  compName: one(competition,{
-    fields: [competitionYear.compId],
-    references: [competition.id],
-  })
-}));
-
-export const competitionRelations = relations(competition, ({ many }) => ({
-	competitionYear: many(competitionYear),
-}));
-
-export const yearRelations = relations(schoolYear, ({ many }) => ({
-	competitionYear: many(competitionYear),
-}));
+export const interests = pgTable("interests",{
+  int_id: integer().primaryKey().generatedAlwaysAsIdentity(),
+  user_id: integer().references(()=>user.user_id),
+  comp_id: integer().references(()=>competition.comp_id),
+  sign_up_date: date("date", {mode: "date"}).notNull(),
+});

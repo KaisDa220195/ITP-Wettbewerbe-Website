@@ -27,3 +27,9 @@ Dauer: 1.5h
 - Test Daten in die Datenbank importiert 
 
 - Backend Struktur und standort überlegt
+
+## 19.01.2025
+
+15:00 - 16:00
+
+- Datenbankshcema neu durchgedacht

@@ -1,0 +1,5 @@
+Eine Website möchte verschiedene Wettbewerbe auf einer Website darstellen. Es gibt verschiedene Wettbewerbe. Für jeden Wettbewerb werden der Name, Beschreibung, der Letzt mögliche anmelde Zeitpunkt, bevorzugter Jahrgang und Abteilung, die Kontaktperson und alle interessierten Schüler in einer Liste gespeichert. Nachdem ein Wettbewerb in einem Jahrgang beendet ist können durch eine Funktion alle Informationen sofort erneuert werden. Ein Benutzer kann sich als interessiert melden und zu der Liste hinzugefügt werden.
+
+Es gibt auf der Seite Benutzer. Für jeden Benutzer werden E-Mail Adresse, Vorname, Nachname, Klasse, Abteilung,  Kürzel für Lehrer, ob es sich um eine Lehrkraft handelt und ein Passwort gespeichert.
+
+Für jeden Wettbewerb gibt es immer eine Kontaktperson. Es können sich beliebig viele Benutzer für einen Wettbewerb interessieren.
