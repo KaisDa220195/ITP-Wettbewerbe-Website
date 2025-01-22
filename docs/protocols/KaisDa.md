@@ -33,3 +33,9 @@ Dauer: 1.5h
 15:00 - 16:00
 
 - Datenbankshcema neu durchgedacht
+
+## 22.01.2025
+
+9:15 - 10 : 10
+
+- Datenbankschema in die Datenbank eingeführt
