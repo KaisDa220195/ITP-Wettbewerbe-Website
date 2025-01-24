@@ -8,6 +8,7 @@ export const competition = pgTable("competition", {
   lastRegistrationDate: date("date", {mode: "date"}).notNull(),
   lowestGrade: smallint(),
   prefBranch: varchar({length:20}),
+  link: varchar(),
   user_id: integer().references(()=>user.user_id)
 });
 
