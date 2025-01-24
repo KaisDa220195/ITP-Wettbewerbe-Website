@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Head from "../head"
 import Footer from "../foot";
-import { addTeacher } from "@/src/db/handleUsers";
+import { addStudent, addTeacher,removeUser,getUser } from "@/src/db/handleUsers";
 
 export default function Home() {
   return (
@@ -15,10 +15,33 @@ export default function Home() {
           const user ={
             email: "this@gmail.com",
             password: "passwort",
-            shortName: "TEMI",
+            branch: "TEMI",
+            class:"3AHMBM",
+          }
+          await addStudent(user)
+        }}>Add Student</button>
+        <br/>
+        <button onClick={async () => {
+          const user ={
+            email: "temi@gmail.com",
+            password: "passwort",
+            shortName:"TEMI",
           }
           await addTeacher(user)
-        }}>Add User</button>
+        }}>Add Teacher</button>
+        <br/>
+        <button onClick={async () => {
+          
+          await removeUser(12);
+        }}>Delete user</button>
+        <br/>
+        <button onClick={async () => {
+          
+          const user = await getUser("temi@gmail.com");
+          console.log(user)
+        }}>getTeacher</button>
+        <br/>
+
       <Footer />
     </div>
   );
