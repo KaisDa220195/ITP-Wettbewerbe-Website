@@ -62,6 +62,10 @@ Dauer: 1.5h
 
 - handleUsers soweit fertig
 
-13:30 -14:40
+13:30 -15:45
 
 - datenbank schema leicht verändert und umgesetzt
+
+16:16 -17:30
+
+- weitere Handler für Tabllen geschrieben

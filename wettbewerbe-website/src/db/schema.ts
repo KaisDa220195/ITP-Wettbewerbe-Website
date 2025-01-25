@@ -36,30 +36,18 @@ export const student = pgTable("student",{
 
 });
 
-// export const usersToCompetitions = pgTable('users_to_competitions',{
-//     user_id: integer('user_id')
-//       .notNull()
-//       .references(() => user.user_id),
-//     comp_id: integer('comp_id')
-//       .notNull()
-//       .references(() => competition.comp_id),
-//   },
-//   (t) => ({
-//     pk: primaryKey({ columns: [t.user_id, t.comp_id] }),
-//   })
-// );
 
 export const interests = pgTable("interests",{
   int_id: integer().primaryKey().generatedAlwaysAsIdentity(),
-  user_id: integer().references(()=>user.user_id),
-  comp_id: integer().references(()=>competition.comp_id),
+  user_id: integer().references(()=>user.user_id, {onDelete: 'cascade'}),
+  comp_id: integer().references(()=>competition.comp_id, {onDelete: 'cascade'}),
   sign_up_date: date("date", {mode: "date"}).notNull(),
 });
 
 export const prefBranch = pgTable("prefBranch",{
-  perfBranch_id: integer().primaryKey().generatedAlwaysAsIdentity(),
-  branch_id: integer().references(()=> branch.branch_id),
-  comp_id: integer().references(()=>competition.comp_id),
+  prefBranch_id: integer().primaryKey().generatedAlwaysAsIdentity(),
+  branch_id: integer().references(()=> branch.branch_id, {onDelete: 'cascade'}),
+  comp_id: integer().references(()=>competition.comp_id, {onDelete: 'cascade'}),
 });
 
 //RELATIONS
