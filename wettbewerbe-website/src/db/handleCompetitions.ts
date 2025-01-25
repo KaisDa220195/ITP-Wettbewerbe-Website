@@ -45,6 +45,6 @@ export async function removeCompetition(comp_id:number){
     await db.delete(competition).where(eq(competition.user_id, comp_id));
 }
 
-export async function getCompetition(){
-     
+export async function getCompetition(comp_id : number){
+    return await db.select().from(competition).where(eq(competition.comp_id,comp_id))
 }
