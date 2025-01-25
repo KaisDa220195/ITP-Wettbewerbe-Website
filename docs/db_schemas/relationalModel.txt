@@ -1,9 +1,13 @@
 competition={comp_id, Name, Description, lastRegistrationDate, lowestGrade, prefBranch, #user_id}
 
+branch={branch_id,Name}
+
 user = {user_id, email , (Password) }
 
 interests = {int_id, #user_id, #comp_id, sign_up_date}
 
 teacher={#user_id,shortName}
 
-student={#user_id,branch,class}
+student={#user_id,#branch_id,class}
+
+preferredBranches={pref_id,#comp_id,#branch_id,}

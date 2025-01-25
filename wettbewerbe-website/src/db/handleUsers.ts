@@ -4,12 +4,14 @@ import { user,student ,teacher} from './schema';
 import { eq,sql} from 'drizzle-orm';
 
 export interface teacherStructure{
+    user_id:number,
     email: string;
     password: string;
     shortName: string;
 }
 
 export interface studentStructure{
+    user_id:number,
     email: string;
     password: string;
     branch: number;
@@ -89,5 +91,15 @@ export async function loginUser(email:string,password:string){
     }
 
 
+}
+
+export async function updateUser(updatedUser: studentStructure | teacherStructure){
+    await db.update(user).set({ email: updatedUser.email,password: updatedUser.password }).where(eq(user.user_id, updatedUser.user_id));
+    if((updatedUser as studentStructure).branch != undefined){
+        await db.update(student).set({ branch: (updatedUser as studentStructure).branch,class: (updatedUser as studentStructure).class }).where(eq(student.user_id, updatedUser.user_id));
+    }
+    else if((updatedUser as teacherStructure).shortName != undefined){
+        await db.update(teacher).set({ shortName: (updatedUser as teacherStructure).shortName}).where(eq(teacher.user_id, updatedUser.user_id));
+    }
 }
 

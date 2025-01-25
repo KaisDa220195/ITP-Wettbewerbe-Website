@@ -13,6 +13,7 @@ export default function Home() {
 
         <button onClick={async () => {
           const user ={
+            user_id: 0,
             email: "daniel@gmail.com",
             password: "passwort",
             branch: 1,
@@ -23,6 +24,7 @@ export default function Home() {
         <br/>
         <button onClick={async () => {
           const user ={
+            user_id: 0,
             email: "temi@gmail.com",
             password: "passwort",
             shortName:"TEMI",
