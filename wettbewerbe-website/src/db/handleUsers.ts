@@ -1,7 +1,7 @@
 "use server"
 import { db } from './index';
 import { user,student ,teacher} from './schema';
-import { eq ,sql} from 'drizzle-orm';
+import { eq,sql} from 'drizzle-orm';
 
 export interface teacherStructure{
     email: string;
@@ -12,10 +12,9 @@ export interface teacherStructure{
 export interface studentStructure{
     email: string;
     password: string;
-    branch: string;
+    branch: number;
     class:string;
 }
-
 
 export async function addStudent(toBeStudent:studentStructure){
     // insert part of the given data into the user table. The rest goes into the student table wiht the same id
@@ -44,9 +43,51 @@ export async function removeUser(user_id:number){
 
 }
 
-export async function getUser(email:string){
-    //const use = await db.select().from(user).where(eq(email,user.email));
-    return await db.select().from(user).where(sql`${user.email} = email`);
+export async function getUser(email:string) : Promise<studentStructure | teacherStructure | null>{
+     
+    const tempUser = await db.select().from(user).where(sql`${user.email} = ${email}`);
+
+    const tempStudent = await db.select().from(student).where(sql`${student.user_id} = ${tempUser[0].user_id}`);
+
+    if(tempStudent.length != 0){
+        const retStudent = {
+            user_id:tempUser[0].user_id,
+            email: tempUser[0].email,
+            password: tempUser[0].password,
+            branch: tempStudent[0].branch,
+            class: tempStudent[0].class,
+        }
+        return retStudent;
+    }
     
+    const tempTeacher = await db.select().from(teacher).where(sql`${teacher.user_id} = ${tempUser[0].user_id}`);
+
+    if(tempTeacher.length != 0){
+        const retTeacher = {
+            user_id: tempUser[0].user_id,
+            email: tempUser[0].email,
+            password: tempUser[0].password,
+            shortName: tempTeacher[0].shortName,
+        }
+        return retTeacher;
+
+    }
+
+    return null;
+    
+}
+
+export async function loginUser(email:string,password:string){
+
+    const tempUser = await getUser(email);
+
+    if(tempUser == null){
+        return null;
+    }
+    else if(tempUser.password == password){
+        return tempUser;
+    }
+
+
 }
 

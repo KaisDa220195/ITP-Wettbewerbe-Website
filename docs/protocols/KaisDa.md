@@ -47,3 +47,21 @@ Dauer: 1.5h
 20:30 - 21:00
 
 - Datenbankhandler weiter getestet
+
+## 24.01.2025
+
+8:15- 9:55
+
+- Delete Function für User geschrieben
+
+- getuser angefangen
+
+## 25.01.2025
+
+11:15 - 13:00
+
+- handleUsers soweit fertig
+
+13:30 -14:40
+
+- datenbank schema leicht verändert und umgesetzt

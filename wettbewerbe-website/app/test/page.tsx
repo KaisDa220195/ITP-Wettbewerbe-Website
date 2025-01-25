@@ -13,9 +13,9 @@ export default function Home() {
 
         <button onClick={async () => {
           const user ={
-            email: "this@gmail.com",
+            email: "daniel@gmail.com",
             password: "passwort",
-            branch: "TEMI",
+            branch: 1,
             class:"3AHMBM",
           }
           await addStudent(user)
@@ -30,16 +30,18 @@ export default function Home() {
           await addTeacher(user)
         }}>Add Teacher</button>
         <br/>
+
         <button onClick={async () => {
           
           await removeUser(12);
         }}>Delete user</button>
         <br/>
+
         <button onClick={async () => {
+
+          const user = await getUser("daniel@gmail.com");
           
-          const user = await getUser("temi@gmail.com");
-          console.log(user)
-        }}>getTeacher</button>
+        }}>getUser</button>
         <br/>
 
       <Footer />
