@@ -1,4 +1,5 @@
 "use server"
+import exp from 'constants';
 import { db } from './index';
 import { user,student ,teacher} from './schema';
 import { eq,sql} from 'drizzle-orm';
@@ -87,7 +88,21 @@ export async function loginUser(email:string,password:string){
         return null;
     }
     else if(tempUser.password == password){
-        return tempUser;
+        if((tempUser as teacherStructure).shortName != undefined){
+            return {
+                user_id:tempUser.user_id,
+                email: tempUser.email,
+                shortName: (tempUser as teacherStructure).shortName,
+            }
+        }
+        else if((tempUser as studentStructure).class != undefined){
+            return {
+                user_id:tempUser.user_id,
+                email: tempUser.email,
+                branch: (tempUser as studentStructure).branch,
+                class:(tempUser as studentStructure).class,
+            }
+        }
     }
 
 
@@ -102,4 +117,5 @@ export async function updateUser(updatedUser: studentStructure | teacherStructur
         await db.update(teacher).set({ shortName: (updatedUser as teacherStructure).shortName}).where(eq(teacher.user_id, updatedUser.user_id));
     }
 }
+
 

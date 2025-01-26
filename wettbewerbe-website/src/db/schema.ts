@@ -1,5 +1,5 @@
 import { integer,smallint,date, pgTable, varchar,text,primaryKey } from "drizzle-orm/pg-core";
-import {relations } from "drizzle-orm";
+import { relations } from "drizzle-orm";
 
 export const competition = pgTable("competition", {
   comp_id: integer().primaryKey().generatedAlwaysAsIdentity(),
@@ -39,8 +39,8 @@ export const student = pgTable("student",{
 
 export const interests = pgTable("interests",{
   int_id: integer().primaryKey().generatedAlwaysAsIdentity(),
-  user_id: integer().references(()=>user.user_id, {onDelete: 'cascade'}),
-  comp_id: integer().references(()=>competition.comp_id, {onDelete: 'cascade'}),
+  user_id: integer().references(()=>user.user_id, {onDelete: 'cascade'}).notNull(),
+  comp_id: integer().references(()=>competition.comp_id, {onDelete: 'cascade'}).notNull(),
   sign_up_date: date("date", {mode: "date"}).notNull(),
 });
 

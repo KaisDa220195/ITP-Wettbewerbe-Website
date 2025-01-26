@@ -69,3 +69,10 @@ Dauer: 1.5h
 16:16 -17:30
 
 - weitere Handler für Tabllen geschrieben
+
+## 26.01.2025
+
+13:30 -16:00
+
+- query functions und login portal im Frontend
+- log-in funktionsfähig
