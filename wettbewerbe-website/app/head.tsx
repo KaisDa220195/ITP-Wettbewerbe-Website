@@ -1,7 +1,17 @@
+import { userInfo } from "./page";
+
 export default function Head(){
+    var temp;
+    if(userInfo != null){
+        temp = <UserInfo/>
+    }else{
+
+        temp = null;
+    }
     return(
         <div className="text-white">
             <Title />
+            {temp}
             <NavBar />
         </div>
         
@@ -28,6 +38,15 @@ export function Title(){
             <h1 className="m-0 text-3xl"><b>Wettbewerbfinder</b></h1>
             <p>Förderung der Teilnahme von Schüler*innen an spannenden Wettbewerben</p>
             
+        </div>
+    );
+}
+export function UserInfo(){
+ 
+    
+    return(
+        <div className="bg-blue-700 text-inherit p-20 text-center">
+            <p>User: {userInfo?.email} </p>
         </div>
     );
 }
