@@ -29,3 +29,9 @@ arbeitete an dem video für die website, suchte einige clips und ordnete diese e
 # 26. 1. 2025
 
 machte das Video fertig, überarbeitete das Audio und exportierte es und lud es auf yt hoch
+
+
+
+# 27.1. 2025
+
+endeckte noch einige fehler in dem video, editierte sie und lud es auf yt hoch(erneut)
