@@ -14,14 +14,18 @@ Ich hab das Exose geschrieben und gepushed(für die Videos)
 
 Wir haben angefangen von dem Drehbuch von Kaiser die Szenen zu filmen, haben alle Szenen geschafft wo Personen drinnen sind. Alle anderen kommen noch. Ich habe die Outtakes und die gefailten audios von den benutzbaren getrennt.
 
-
-
 # 20.1.2025
 
 Ich hab ein projekt erstellt, und hab angefangen, die audios mit den videos gleichzustellen, was sich aber als zeitaufwändiger als gedacht herausstellte
 
-
-
 # 21.1.2025
 
-arbeitete noch mehr an dem projekt(3h)s
+arbeitete noch mehr an dem projekt(3h)
+
+# 24.1. 2025
+
+arbeitete an dem video für die website, suchte einige clips und ordnete diese ein
+
+# 26. 1. 2025
+
+machte das Video fertig, überarbeitete das Audio und exportierte es und lud es auf yt hoch
