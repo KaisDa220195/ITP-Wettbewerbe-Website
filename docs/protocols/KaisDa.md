@@ -72,7 +72,7 @@ Dauer: 1.5h
 
 ## 26.01.2025
 
-13:30 -16:00
+13:30 -16:30
 
 - query functions und login portal im Frontend
 - log-in funktionsfähig
