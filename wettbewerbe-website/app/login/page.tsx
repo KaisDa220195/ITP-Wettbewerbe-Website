@@ -28,7 +28,8 @@ async function handleSubmit(e: React.FormEvent<HTMLFormElement>,email:string,pas
     const temp = await loginUser(email,password)
     if(temp != null){
         setUserInfo(temp);
-        console.log("Log-In successful")
+        Head.setTemp();
+        console.log("Log-In successful");
     }
     else{
         console.log("log in not successful")

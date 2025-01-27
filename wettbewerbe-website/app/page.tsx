@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Head from "./head"
 import Footer from "./foot";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
-export var userInfo:{
+
+export var userInfo = createContext<{
   user_id:number,
   email: string;
   shortName: string;
@@ -14,7 +16,7 @@ export var userInfo:{
   branch: number;
   class:string;
 }
-| null = null;
+| null>(null);
 
 export function setUserInfo(user: {
   user_id:number,

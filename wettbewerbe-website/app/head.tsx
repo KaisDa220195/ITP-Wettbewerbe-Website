@@ -1,17 +1,14 @@
+"use client"
 import { userInfo } from "./page";
+import { useState ,createContext,useContext} from 'react';
 
 export default function Head(){
-    var temp;
-    if(userInfo != null){
-        temp = <UserInfo/>
-    }else{
-
-        temp = null;
-    }
+    
+    
     return(
         <div className="text-white">
             <Title />
-            {temp}
+            
             <NavBar />
         </div>
         
@@ -42,8 +39,15 @@ export function Title(){
     );
 }
 export function UserInfo(){
- 
-    
+    const data = useContext(userInfo);
+
+    function setTemp(){
+        if(userInfo != null){
+            setTTemp(<UserInfo/>);
+        }else{
+            setTTemp(null);
+        }
+    }
     return(
         <div className="bg-blue-700 text-inherit p-20 text-center">
             <p>User: {userInfo?.email} </p>
