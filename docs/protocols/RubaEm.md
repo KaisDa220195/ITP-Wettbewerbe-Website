@@ -8,7 +8,7 @@ Ich habe mit meiner Gruppe angefangen das Drehbuch für die Videos zu schreiben.
 
 # 12.1.2025
 
-Ich hab das Exose geschrieben und gepushed(für die Videos)
+Ich hab das Expose geschrieben und gepushed(für die Videos)
 
 # 14.1.2025
 
@@ -29,8 +29,6 @@ arbeitete an dem video für die website, suchte einige clips und ordnete diese e
 # 26. 1. 2025
 
 machte das Video fertig, überarbeitete das Audio und exportierte es und lud es auf yt hoch
-
-
 
 # 27.1. 2025
 
