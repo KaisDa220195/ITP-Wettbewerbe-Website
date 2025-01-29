@@ -76,3 +76,19 @@ Dauer: 1.5h
 
 - query functions und login portal im Frontend
 - log-in funktionsfähig
+
+
+
+## 28.01.2025
+
+13:00 - 13:45
+
+- Next-Auth installiert und zum Teil eingerichtet mit Problemen
+
+
+
+## 29.01.2025
+
+13:00 - 13:50
+
+- NextAuth Probleme weiter angeschaut und verscuht zu lösen

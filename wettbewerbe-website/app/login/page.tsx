@@ -12,11 +12,11 @@ import { setUserInfo } from "../page";
 export default function logIn() {
   return (
     <div>
-        <Head />
+        
     
-        <LoginForm/>
+      <LoginForm/>
 
-        <Footer />
+    
     </div>
     
     

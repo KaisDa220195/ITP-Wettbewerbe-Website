@@ -1,6 +1,7 @@
+"use client"
 import Image from "next/image";
-import Head from "./head"
-import Footer from "./foot";
+import { SessionProvider } from "next-auth/react"
+
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 
@@ -35,17 +36,18 @@ export function setUserInfo(user: {
 
 }
 
-export default function Home() {
+export default function Home( {
+  Component,
+  pageProps: { session, ...pageProps },
+}){
   return (
     
     <div className="font-sans m-0 p-0 bg-gray-50 text-neutral-700">
-      <Head /> 
-
-      {
-        
-      }
-
-      <Footer />
+      
+      <SessionProvider basePath={"/auth"} session={session}>
+        <ClientExample />
+      </SessionProvider>
+      
     </div>
   );
 }
