@@ -1,6 +1,6 @@
 import { loginUser } from "@/src/db/handleUsers";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { User } from "next-auth/"
+import { User,NextAuthOptions } from "next-auth/"
 
 export interface appuser extends User {
     shortName: string| null;
@@ -8,7 +8,8 @@ export interface appuser extends User {
     class:string | null;
 }
 
-providers: [
+export const authOptions: NextAuthOptions = {
+  providers: [
   CredentialsProvider({
     // The name to display on the sign in form (e.g. "Sign in with...")
     name: "Credentials",
@@ -33,11 +34,20 @@ providers: [
                 image: null,
                 shortName: user!.shortName,
                 branch: user!.branch,
-                class: user!.shortName,
+                class: user!.branch,
             }
         }
         return null;
     }
+    
       
   })
-]
+  ],
+  pages: {
+    signIn: "/login",
+    signOut: "/auth/signout",
+    error: "/auth/error", // Error handling page
+    verifyRequest: "/auth/verify-request", // Email verification page
+    newUser: "/auth/welcome", // Redirect for new users
+  }
+}

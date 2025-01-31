@@ -1,22 +1,27 @@
 "use client"
-import Head from "../head"
-import Footer from "../foot";
+import Head from "@/app/head"
+import Footer from "@/app/foot";
 import { loginUser } from "@/src/db/handleUsers";
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { setUserInfo } from "../page";
+import { signIn,SessionProvider,getSession } from "next-auth/react";
 
 
-export default function logIn() {
+
+export default async function logIn() {
+  const session = await getSession();
+
   return (
     <div>
-        
-    
-      <LoginForm/>
+      <SessionProvider basePath={"/api/auth"} session={session}>
+        <Head/>
 
-    
+        <LoginForm/>
+              
+        <Footer/>
+      </SessionProvider>
     </div>
     
     
@@ -24,17 +29,24 @@ export default function logIn() {
 }
 
 async function handleSubmit(e: React.FormEvent<HTMLFormElement>,email:string,password:string){
+    
     e.preventDefault();
-    const temp = await loginUser(email,password)
-    if(temp != null){
-        setUserInfo(temp);
-        Head.setTemp();
-        console.log("Log-In successful");
-    }
-    else{
+    
+    const result = await signIn("credentials", {
+      email: email,
+      password: password,
+      redirect: false, // Prevents automatic redirection, so we can handle the response manually
+    });
+    if(result?.error){
+        
         console.log("log in not successful")
     }
+    else{        
+      console.log("Log-In successful");
+      window.location.href = "/";
+    }
 }
+
 export function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
