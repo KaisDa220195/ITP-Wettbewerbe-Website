@@ -25,8 +25,6 @@ function NavBar(){
         <a href="kalender.html" className="text-inherit p-5 hover:bg-blue-700 hover:rounded">Kalender</a>
         <a href="wettbewerbeEinreichen.html" className="text-inherit p-5 hover:bg-blue-700 hover:rounded">Wettbewerb einreichen</a>
         <a href="test" className="text-inherit p-5 hover:bg-blue-700 hover:rounded">Test</a>
-        <a href="/login" className="text-inherit p-5 hover:bg-blue-700 hover:rounded">Log-in</a>
-        <a href="/register" className="text-inherit p-5 hover:bg-blue-700 hover:rounded">Log-in</a>
     </div>
     );
 } 
@@ -37,7 +35,9 @@ export function Title(){
             
             <h1 className="m-0 text-3xl"><b>Wettbewerbfinder</b></h1>
             <p>Förderung der Teilnahme von Schüler*innen an spannenden Wettbewerben</p>
-            <UserInfo/>
+            <div className="absolute right-0 top-16">
+                <UserInfo/>
+            </div>
             
         </div>
     );
@@ -53,7 +53,7 @@ export function UserInfo(){
             <div className="bg-blue-700 text-inherit p-20 text-center">
             
                 Signed in with {session.user?.email} <br />
-                <button onClick={() => signOut()}>Sign out</button>
+                <button onClick={async() => await signOut()}>Sign out</button>
             
             </div>
         )

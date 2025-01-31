@@ -8,12 +8,13 @@ export interface appuser extends User {
     class:string | null;
 }
 
-const authOptions: NextAuthOptions = {
+export const authOptions: NextAuthOptions = {
+  debug: true,
   session: {
     strategy: "jwt",
   },
   pages: {
-    signIn: "",
+    signIn: "/login",
     signOut: "/auth/signout",
     error: "/auth/error", // Error handling page
     verifyRequest: "/auth/verify-request", // Email verification page
@@ -55,4 +56,4 @@ const authOptions: NextAuthOptions = {
   ],
   
 }
-export{ authOptions as GET, authOptions as POST };
+

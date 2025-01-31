@@ -7,13 +7,13 @@ import { redirect } from "next/navigation";
 import LoginForm from "./form";
 
 
-export default async function LoginPage() {
+export default function LoginPage() {
   const session = useSession();
   console.log({ session });
 
-  if (session) {
-    redirect("/");
-  }
+  // if (session) {
+  //   redirect("/");
+  // }
 
   return (
     
