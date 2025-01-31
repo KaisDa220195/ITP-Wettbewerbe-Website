@@ -74,9 +74,15 @@ export async function getUser(email:string) : Promise<studentStructure | teacher
         }
         return retTeacher;
 
+
     }
 
     return null;
+    
+}
+
+export async function getuserInfo(email:string) {
+    const tempUser = getUser(email);
     
 }
 

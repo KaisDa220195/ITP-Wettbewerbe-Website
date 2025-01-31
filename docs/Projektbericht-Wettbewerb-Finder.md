@@ -1,14 +1,8 @@
 # Projektbericht: Wettbewerb Finder
 
-
-
-
-
 - Einführung
 
--  
-
-
+- 
 
 ## Einführung
 
