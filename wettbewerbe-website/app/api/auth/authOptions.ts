@@ -8,7 +8,17 @@ export interface appuser extends User {
     class:string | null;
 }
 
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
+  session: {
+    strategy: "jwt",
+  },
+  pages: {
+    signIn: "",
+    signOut: "/auth/signout",
+    error: "/auth/error", // Error handling page
+    verifyRequest: "/auth/verify-request", // Email verification page
+    newUser: "/register", // Redirect for new users
+  },
   providers: [
   CredentialsProvider({
     // The name to display on the sign in form (e.g. "Sign in with...")
@@ -18,8 +28,8 @@ export const authOptions: NextAuthOptions = {
     // e.g. domain, username, password, 2FA token, etc.
     // You can pass any HTML attribute to the <input> tag through the object.
     credentials: {
-      email: { label: "Email", type: "text", placeholder: "jsmith@mail.com" },
-      password: { label: "Password", type: "password" }
+      email: { },//label: "Email", type: "text", placeholder: "jsmith@mail.com" },
+      password: { } //label: "Password", type: "password" }
     },
     async authorize(credentials, req) {
       // Add logic here to look up the user from the credentials supplied
@@ -43,11 +53,6 @@ export const authOptions: NextAuthOptions = {
       
   })
   ],
-  pages: {
-    signIn: "/login",
-    signOut: "/auth/signout",
-    error: "/auth/error", // Error handling page
-    verifyRequest: "/auth/verify-request", // Email verification page
-    newUser: "/auth/welcome", // Redirect for new users
-  }
+  
 }
+export{ authOptions as GET, authOptions as POST };

@@ -26,6 +26,7 @@ function NavBar(){
         <a href="wettbewerbeEinreichen.html" className="text-inherit p-5 hover:bg-blue-700 hover:rounded">Wettbewerb einreichen</a>
         <a href="test" className="text-inherit p-5 hover:bg-blue-700 hover:rounded">Test</a>
         <a href="/login" className="text-inherit p-5 hover:bg-blue-700 hover:rounded">Log-in</a>
+        <a href="/register" className="text-inherit p-5 hover:bg-blue-700 hover:rounded">Log-in</a>
     </div>
     );
 } 
@@ -61,7 +62,7 @@ export function UserInfo(){
         <>
           
             Not signed in <br />
-            <button onClick={() => signIn()}>Sign in</button>
+            <a href="/login" >Log-in</a>
           
         </>
     )

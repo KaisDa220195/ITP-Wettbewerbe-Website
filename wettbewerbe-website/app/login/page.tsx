@@ -1,32 +1,48 @@
 "use client"
-import Head from "@/app/head"
-import Footer from "@/app/foot";
-import { loginUser } from "@/src/db/handleUsers";
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { signIn,SessionProvider,getSession } from "next-auth/react";
+import { signIn,useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
+import LoginForm from "./form";
 
 
+export default async function LoginPage() {
+  const session = useSession();
+  console.log({ session });
 
-export default async function logIn() {
-  const session = await getSession();
+  if (session) {
+    redirect("/");
+  }
 
   return (
-    <div>
-      <SessionProvider basePath={"/api/auth"} session={session}>
-        <Head/>
-
-        <LoginForm/>
-              
-        <Footer/>
-      </SessionProvider>
-    </div>
     
+      <section className="h-screen flex items-center justify-center">
+        <div className="w-[600px]">
+          <LoginForm />;
+        </div>
+      </section>
     
   );
 }
+
+// export default async function logIn() {
+//   const session = await getSession();
+
+//   return (
+//     <div>
+//       <SessionProvider basePath={"/api/auth"} session={session}>
+//         <Head/>
+
+//         <LoginForm/>
+              
+//         <Footer/>
+//       </SessionProvider>
+//     </div>
+    
+    
+//   );
+// }
 
 async function handleSubmit(e: React.FormEvent<HTMLFormElement>,email:string,password:string){
     
@@ -47,7 +63,7 @@ async function handleSubmit(e: React.FormEvent<HTMLFormElement>,email:string,pas
     }
 }
 
-export function LoginForm() {
+export function Loginform() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
