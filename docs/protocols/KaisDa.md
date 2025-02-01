@@ -94,3 +94,13 @@ Dauer: 1.5h
 9:30- 14:00
 
 - NextAuth funktioniert und man kann sich einloggen
+
+## 01.02.2025
+
+12:00 - 12:30
+
+- Projektbericht: Ersten Punkte in der Aufgabenstellung von NextGeneration bearbeitet
+
+14:15 - 16:00
+
+- Weitere Punkte im Projektbericht bearbeitet
