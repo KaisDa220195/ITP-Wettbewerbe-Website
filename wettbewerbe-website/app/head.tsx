@@ -29,10 +29,9 @@ export default function Head() {
 
 function NavBar() {
     return (
-        <div className="bg-blue-900 flex justify-around p-10 flex-row">
-            <a href="#" className="text-inherit p-5 hover:bg-blue-700 hover:rounded">Kategorien</a>
-            <a href="kalender.html" className="text-inherit p-5 hover:bg-blue-700 hover:rounded">Kalender</a>
-            <a href="wettbewerbeEinreichen.html" className="text-inherit p-5 hover:bg-blue-700 hover:rounded">Wettbewerb einreichen</a>
+        <div className="bg-blue-900 flex justify-around p-5 flex-row">
+            <a href="/" className="text-inherit p-5 hover:bg-blue-700 hover:rounded">Wettbewerbe</a>
+            <a href="calendar" className="text-inherit p-5 hover:bg-blue-700 hover:rounded">Kalender</a>
             <a href="test" className="text-inherit p-5 hover:bg-blue-700 hover:rounded">Test</a>
         </div>
     );
@@ -40,7 +39,7 @@ function NavBar() {
 
 export function Title() {
     return (
-        <div className="bg-blue-700 text-inherit p-20 text-center">
+        <div className="bg-blue-700 text-inherit p-16 text-center">
 
             <h1 className="m-0 text-3xl"><b>Wettbewerbfinder</b></h1>
             <p>Förderung der Teilnahme von Schüler*innen an spannenden Wettbewerben</p>
@@ -59,28 +58,32 @@ export function UserInfo() {
     if (session) {
         return (
 
-            <div className="bg-blue-700 text-inherit p-20 text-center">
-
-                Signed in with  <br />
+            <div className="bg-blue-700 text-inherit p-5 pr-16 text-center">
                 
                 <DropdownMenu>
+
                     <DropdownMenuTrigger><Menu /></DropdownMenuTrigger>
                     <DropdownMenuContent>
+
                         <DropdownMenuLabel>Signed in</DropdownMenuLabel>
-                        
                         <DropdownMenuItem>{session.user?.email}</DropdownMenuItem>
+
                         <DropdownMenuSeparator />
+
                         <DropdownMenuItem><button onClick={async () => await signOut()}>Sign out</button></DropdownMenuItem>
+
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>Team</DropdownMenuItem>
-                        <DropdownMenuItem>Subscription</DropdownMenuItem> 
+
+                        <DropdownMenuItem>Wettbewerb hinzufügen</DropdownMenuItem> 
+
                     </DropdownMenuContent>
+
                 </DropdownMenu>
             </div>
         )
     }
     return (
-        <>
+        <div className="bg-blue-700 text-inherit p-5 pr-16 text-center">
             <DropdownMenu>
                 <DropdownMenuTrigger><Menu /></DropdownMenuTrigger>
                 <DropdownMenuContent>
@@ -91,6 +94,6 @@ export function UserInfo() {
                 </DropdownMenuContent>
             </DropdownMenu>
 
-        </>
+        </div>
     )
 }

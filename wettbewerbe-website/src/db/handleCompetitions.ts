@@ -4,8 +4,8 @@ import { addPrefBranch } from './handlePrefBranch';
 import { competition,user,branch} from './schema';
 import { eq,sql} from 'drizzle-orm';
 
-export interface competition  {
-    comp_id:number,
+export interface competitionStruct  {
+  comp_id:number,
   name: string,
   description: string,
   lastRegistrationDate: Date,
@@ -15,7 +15,7 @@ export interface competition  {
   user_id: number,
 }
 
-export async function addCompetition(comp:competition,branches:number[]){
+export async function addCompetition(comp:competitionStruct,branches:number[]){
 
     if((await db.select().from(user).where(eq(user.user_id,comp.user_id))).length != 0){
         const comp_id = (await db.insert(competition).values({

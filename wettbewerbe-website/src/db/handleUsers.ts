@@ -123,5 +123,3 @@ export async function updateUser(updatedUser: studentStructure | teacherStructur
         await db.update(teacher).set({ shortName: (updatedUser as teacherStructure).shortName}).where(eq(teacher.user_id, updatedUser.user_id));
     }
 }
-
-

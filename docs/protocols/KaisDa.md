@@ -104,3 +104,13 @@ Dauer: 1.5h
 14:15 - 16:00
 
 - Weitere Punkte im Projektbericht bearbeitet
+
+## 02.02.2025
+
+12:10 - 13:30
+
+- Videoproduktion im Projektbericht eingebaut
+
+14:30 - 17:30
+
+- Backend und Frontend im Projektbericht erklärt

@@ -102,7 +102,7 @@ export default function LoginForm() {
               <FormControl>
                 <Input
                   className="text-black"
-                  placeholder="Hasło"
+                  placeholder="Password"
                   {...field}
                   type="password"
                 />
@@ -115,7 +115,7 @@ export default function LoginForm() {
           className="hover:scale-110 hover:bg-cyan-700"
           disabled={form.formState.isSubmitting}
         >
-          {form.formState.isSubmitting ? "Opening...." : "Open Sesame!"}
+          {form.formState.isSubmitting ? "Opening...." : "Log in"}
         </Button>
       </form>
     </Form>
