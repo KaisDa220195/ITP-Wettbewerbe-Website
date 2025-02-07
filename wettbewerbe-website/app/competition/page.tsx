@@ -1,8 +1,12 @@
 import { competitionStruct } from "@/src/db/handleCompetitions";
-import { useSearchParams } from 'react-router-dom';
+import React from 'react';
+
+type Props = {
+    comp_id: number;
+  };
 
 export default function competitionPage(comp:competitionStruct){
-
+    
     return(
         <div className="flex justify-center items-center  bg-gray-100 p-6">
             <div className="bg-white shadow-lg rounded-2xl p-8 max-w-2xl border border-gray-200 text-center">
