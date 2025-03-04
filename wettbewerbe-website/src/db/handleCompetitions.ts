@@ -46,5 +46,16 @@ export async function removeCompetition(comp_id:number){
 }
 
 export async function getCompetition(comp_id : number){
-    return await db.select().from(competition).where(eq(competition.comp_id,comp_id))
+    return (await db.select().from(competition).where(eq(competition.comp_id,comp_id)))[0]
+}
+
+export async function getPreferredBranches(comp_id:number){
+    // const result = await db.query.branch.findMany({
+    //     with:{
+    //         prefBranch:{
+    //             where: eq()
+    //         }
+    //     }
+        
+    // });
 }

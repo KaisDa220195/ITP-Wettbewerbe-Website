@@ -12,6 +12,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { endpointServerChangedSubscribe } from 'next/dist/build/swc/generated-native';
 
 export default function Head() {
 
@@ -73,6 +74,9 @@ export function UserInfo() {
                         <DropdownMenuItem><button onClick={async () => await signOut()}>Sign out</button></DropdownMenuItem>
 
                         <DropdownMenuSeparator />
+
+                        <DropdownMenuItem>{session.user?.shortName}</DropdownMenuItem>
+                        
 
                         <DropdownMenuItem>Wettbewerb hinzufügen</DropdownMenuItem> 
 

@@ -1,11 +1,21 @@
 import { loginUser } from "@/src/db/handleUsers";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { User,NextAuthOptions } from "next-auth/"
+import { NextAuthOptions } from "next-auth/"
+import NextAuth, { type DefaultSession} from "next-auth"
 
-export interface appuser extends User {
-    shortName: string| null;
-    branch: number | null;
-    class:string | null;
+declare module "next-auth" {
+  interface User {
+    shortName?:string | null,
+    branch?: number | null,
+    class?: string | null,
+  }
+  /**
+   * Returned by `auth`, `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
+   */
+
+  interface Session {
+    user: User & DefaultSession["user"]
+  }
 }
 
 export const authOptions: NextAuthOptions = {
@@ -20,6 +30,22 @@ export const authOptions: NextAuthOptions = {
     verifyRequest: "/auth/verify-request", // Email verification page
     newUser: "/register", // Redirect for new users
   },
+  callbacks: {
+    session({ session, token, user }) {
+      // `session.user.address` is now a valid property, and will be type-checked
+      // in places like `useSession().data.user` or `auth().user`
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          shortName: user.shortName,
+          branch: user.branch,
+          class: user.class,
+        },
+      }
+    },
+  },
+  
   providers: [
   CredentialsProvider({
     // The name to display on the sign in form (e.g. "Sign in with...")
@@ -47,14 +73,11 @@ export const authOptions: NextAuthOptions = {
                 branch: user!.branch,
                 class: user!.branch,
             }
+            return
         }
         return null;
     }
-    
-      
   })
   ],
-
-  
 }
 

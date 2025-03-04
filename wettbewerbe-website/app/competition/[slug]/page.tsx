@@ -1,13 +1,23 @@
-"use client"
-import { competitionStruct } from "@/src/db/handleCompetitions";
-import React from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { getCompetition } from "@/src/db/handleCompetitions";
+import { getCompetition } from "@/src/db/handleCompetitions"
 
-export default async function competitionPage(){
-    const param = useSearchParams();// Retrieve query parameters
+export default async function page({
+    params,
+} : {params: Promise<{ slug : string}>}
 
-    const comp = await getCompetition(Number(param.get('comp_id')))
+) {
+
+
+    const { slug } = await params
+
+    const comp = await getCompetition(parseInt(slug))
+
+    if(comp == undefined){
+        return(<div>
+            <h1>ERROR: Competition Not Found</h1>
+        </div>)
+    }
+
+
     return(
         <div className="flex justify-center items-center  bg-gray-100 p-6">
             <div className="bg-white shadow-lg rounded-2xl p-8 max-w-2xl border border-gray-200 text-center">
@@ -28,4 +38,7 @@ export default async function competitionPage(){
             </div>
         </div>
     );
+
+
+    
 }
