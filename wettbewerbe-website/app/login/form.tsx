@@ -1,6 +1,6 @@
 "use client";
 
-import { signIn } from "next-auth/react";
+import { signIn } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -47,10 +47,11 @@ export default function LoginForm() {
     const { email, password } = data;
 
     try {
-      const response: any = await signIn("credentials", {
+      const response: any = await signIn.email({
         email,
         password,
-        redirect: false,
+        callbackURL: "/",
+        
       });
       console.log({ response });
       if (!response?.error) {

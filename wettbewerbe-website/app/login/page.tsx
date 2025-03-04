@@ -2,8 +2,7 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { signIn,useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
+import { signIn,useSession } from "@/lib/auth-client";
 import LoginForm from "./form";
 
 
@@ -48,14 +47,14 @@ async function handleSubmit(e: React.FormEvent<HTMLFormElement>,email:string,pas
     
     e.preventDefault();
     
-    const result = await signIn("credentials", {
+    const result = await signIn.email( {
       email: email,
       password: password,
-      redirect: false, // Prevents automatic redirection, so we can handle the response manually
+      callbackURL: "/", // Prevents automatic redirection, so we can handle the response manually
     });
     if(result?.error){
         
-        console.log("log in not successful")
+      console.log("log in not successful")
     }
     else{        
       console.log("Log-In successful");

@@ -1,7 +1,8 @@
 "use client"
 
 import { useState, createContext, useContext } from 'react';
-import { useSession, signIn, signOut, SessionProvider } from "next-auth/react"
+import { useSession, signOut } from "@/lib/auth-client"
+
 import logIn from './login/page';
 import { Menu } from 'lucide-react';
 import {
@@ -54,7 +55,7 @@ export function Title() {
 export function UserInfo() {
 
 
-    const { data: session, status } = useSession()
+    const { data: session } = useSession()
 
     if (session) {
         return (
@@ -73,10 +74,7 @@ export function UserInfo() {
 
                         <DropdownMenuItem><button onClick={async () => await signOut()}>Sign out</button></DropdownMenuItem>
 
-                        <DropdownMenuSeparator />
-
-                        <DropdownMenuItem>{session.user?.shortName}</DropdownMenuItem>
-                        
+                        <DropdownMenuSeparator />                        
 
                         <DropdownMenuItem>Wettbewerb hinzufügen</DropdownMenuItem> 
 

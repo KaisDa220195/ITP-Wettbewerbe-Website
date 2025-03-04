@@ -1,13 +1,13 @@
 "use client"
 import Image from "next/image";
-import { useSession } from "next-auth/react"
+import { signIn,useSession } from "@/lib/auth-client";
 import competitionCard from "./competitionCard";
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 
 export default function Home(){
 
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   return (
     
     <div className="font-sans m-0 p-0 bg-gray-50 text-neutral-700">
@@ -43,36 +43,3 @@ export default function Home(){
 
   
 }
-
-
-// export var userInfo = createContext<{
-//   user_id:number,
-//   email: string;
-//   shortName: string;
-// }
-// |
-// {
-//   user_id:number,
-//   email: string;
-//   branch: number;
-//   class:string;
-// }
-// | null>(null);
-
-// export function setUserInfo(user: {
-//   user_id:number,
-//   email: string;
-//   shortName: string;
-// }
-// |
-// {
-//   user_id:number,
-//   email: string;
-//   branch: number;
-//   class:string;
-// }
-// | null = null){
-//   userInfo = user;
-
-// }
-

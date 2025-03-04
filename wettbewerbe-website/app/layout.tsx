@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-import AuthProvider from "@/app/global"
 import Head from "./head"
 import Footer from "./foot";
 
@@ -33,13 +32,13 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         
-        <AuthProvider>
+        
           
           <Head/>
           {children}
           <Footer/>
 
-        </AuthProvider>
+        
         
         
 
