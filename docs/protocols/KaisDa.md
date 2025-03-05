@@ -114,3 +114,15 @@ Dauer: 1.5h
 14:30 - 17:30
 
 - Backend und Frontend im Projektbericht erklärt
+
+### 04.03.2025
+
+10:10 - 12:00
+
+- Versucht User daten zu erweitern
+
+- Nicht funkional mit next auth version
+
+12:55 - 13:45
+
+- Betterauth implementieren und NextAuth aussetzen

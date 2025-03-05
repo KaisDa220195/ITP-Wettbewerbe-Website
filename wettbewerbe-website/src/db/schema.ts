@@ -9,7 +9,7 @@ export const competition = pgTable("competition", {
   lastRegistrationDate: date("date", { mode: "date" }).notNull(),
   lowestGrade: smallint().notNull(),
   link: varchar().notNull(),
-  user_id: integer().references(() => user.id)
+  user_id: text().references(() => user.id)
 });
 
 export const branch = pgTable("branch", {
@@ -26,12 +26,12 @@ export const branch = pgTable("branch", {
 // });
 
 export const teacher = pgTable("teacher", {
-  user_id: integer().references(() => user.id).primaryKey(),
+  user_id: text().references(() => user.id).primaryKey(),
   shortName: varchar({ length: 10 }).notNull()
 });
 
 export const student = pgTable("student", {
-  user_id: integer().references(() => user.id).primaryKey(),
+  user_id: text().references(() => user.id).primaryKey(),
   branch: integer().references(() => branch.branch_id).notNull(),
   class: varchar({ length: 10 }).notNull(),
 
@@ -40,7 +40,7 @@ export const student = pgTable("student", {
 
 export const interests = pgTable("interests", {
   int_id: integer().primaryKey().generatedAlwaysAsIdentity(),
-  user_id: integer().references(() => user.id, { onDelete: 'cascade' }).notNull(),
+  user_id: text().references(() => user.id, { onDelete: 'cascade' }).notNull(),
   comp_id: integer().references(() => competition.comp_id, { onDelete: 'cascade' }).notNull(),
   sign_up_date: date("date", { mode: "date" }).notNull(),
 });
@@ -51,7 +51,6 @@ export const prefBranch = pgTable("prefBranch", {
   comp_id: integer().references(() => competition.comp_id, { onDelete: 'cascade' }),
 });
 
-
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
   name: text('name').notNull(),
@@ -59,7 +58,9 @@ export const user = pgTable("user", {
   emailVerified: boolean('email_verified').notNull(),
   image: text('image'),
   createdAt: timestamp('created_at').notNull(),
-  updatedAt: timestamp('updated_at').notNull()
+  updatedAt: timestamp('updated_at').notNull(),
+  class: text('class'),
+  branch: integer('branch')
 });
 
 export const session = pgTable("session", {

@@ -1,5 +1,7 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client"; //import the auth client 
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -18,65 +20,82 @@ import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
 
 const FormSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+  email: z.string().email({
+    message: "Invalid email address.",
   }),
   password: z.string().min(6, {
     message: "Password must be at least 6 characters.",
   }),
+  name: z.string().min(2, {
+    message: "Password must be at least 6 characters.",
+  }),
+  classs: z.string().min(2, {
+    message: "Password must be at least 6 characters.",
+  }),
+  branch: z.string().min(1),
 });
 
 type FormData = z.infer<typeof FormSchema>;
 
-export default function FormPage() {
+export default function LoginForm() {
+  const router = useRouter();
+
   const form = useForm({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      username: "",
+      email: "",
       password: "",
+      name: "",
+      classs:"",
+      branch: "1",
     },
   });
 
-  const onSubmit = async (data: FormData) => {
-    console.log("Submitting form", data);
+  const onSubmit = async (dataa: FormData) => {
 
-    const { username: email, password } = data;
+    const { email, password, name,classs,branch } = dataa;
 
-    try {
-      const response = await fetch("/api/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      // Process response here
-      console.log("Registration Successful", response);
-      toast({ title: "Registration Successful" });
-    } catch (error: any) {
-      console.error("Registration Failed:", error);
-      toast({ title: "Registration Failed", description: error.message });
-    }
+    const { data, error } = await authClient.signUp.email({
+      email, // user email address
+      password, // user password -> min 8 characters by default
+      name, // user display name
+      class: classs,
+      branch: parseInt(branch),
+      callbackURL: "/" // a url to redirect to after the user verifies their email (optional)
+    }, {
+      onRequest: (ctx) => {
+        //show loading
+      },
+      onSuccess: (ctx) => {
+        //redirect to the dashboard or sign in page
+      },
+      onError: (ctx) => {
+        // display the error message
+        alert(ctx.error.message);
+      },
+    })
   };
-  //className="w-2/3 space-y-6">
+  //className="w-2/3 space-y-6"
   return (
-    <Form {...form}> 
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+    <Form {...form} >
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="text-white p-4 md:p-16 border-[1.5px] rounded-lg border-gray-300 flex flex-col items-center justify-center gap-y-6"
+      >
         <FormField
           control={form.control}
-          name="username"
+          name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
+              <FormLabel>Provide Email</FormLabel>
               <FormControl>
-                <Input placeholder="Username" {...field} />
+                <Input
+                  className="text-black"
+                  placeholder="Provide Email"
+                  {...field}
+                  type="text"
+                />
               </FormControl>
-              <FormDescription>
-                This is your public display name.
-              </FormDescription>
             </FormItem>
           )}
         />
@@ -85,14 +104,81 @@ export default function FormPage() {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password</FormLabel>
+              <FormLabel>Provide Password</FormLabel>
               <FormControl>
-                <Input placeholder="Password" {...field} type="password" />
+                <Input
+                  className="text-black"
+                  placeholder="Password"
+                  {...field}
+                  type="password"
+                />
               </FormControl>
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Provide Password</FormLabel>
+              <FormControl>
+                <Input
+                  className="text-black"
+                  placeholder="na"
+                  {...field}
+                  type="text"
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="classs"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Provide Password</FormLabel>
+              <FormControl>
+                <Input
+                  className="text-black"
+                  placeholder="6HFET"
+                  {...field}
+                  type="text"
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="branch"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Provide Password</FormLabel>
+              <FormControl>
+                <Input
+                  className="text-black"
+                  placeholder="IT"
+                  {...field}
+                  type="number"
+                  
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+
+
+
+        <Button
+          type="submit"
+          className="hover:scale-110 hover:bg-cyan-700"
+          disabled={form.formState.isSubmitting}
+        >
+          {form.formState.isSubmitting ? "Opening...." : "Log in"}
+        </Button>
       </form>
     </Form>
   );
