@@ -23,6 +23,11 @@ export const auth = betterAuth({
             type:"number",
             required:false,
             input: true
+          },
+          isTeacher:{
+            type: "boolean",
+            required: true,
+            input: true,
           }
         },
       },
