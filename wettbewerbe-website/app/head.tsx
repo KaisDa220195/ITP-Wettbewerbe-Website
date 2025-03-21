@@ -42,14 +42,12 @@ function NavBar() {
 
 export function Title() {
     return (
-        <div className="bg-blue-700 text-inherit p-16 text-center">
-
-            <h1 className="m-0 text-3xl"><b>Wettbewerbfinder</b></h1>
-            <p>Förderung der Teilnahme von Schüler*innen an spannenden Wettbewerben</p>
-            <div className="absolute right-0 top-16">
+        <div className="bg-blue-700 text-inherit py-2 px-4 text-center"> 
+            <h1 className="m-0 text-4xl font-extrabold">Wettbewerbfinder</h1>
+            <p className="text-sm">Förderung der Teilnahme von Schüler*innen an spannenden Wettbewerben</p>
+            <div className="absolute right-0 top-2">
                 <UserInfo />
             </div>
-
         </div>
     );
 }
