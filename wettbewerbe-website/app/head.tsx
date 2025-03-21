@@ -53,36 +53,58 @@ export function Title() {
     );
 }
 export function UserInfo() {
-
-
     const { data: session } = useSession()
 
     if (session) {
-        return (
+        if(session.user.isTeacher == true){
+            return (//Teacher dropdown bar
 
-            <div className="bg-blue-700 text-inherit p-5 pr-16 text-center">
+                <div className="bg-blue-700 text-inherit p-5 pr-16 text-center">
+                    
+                    <DropdownMenu>
+    
+                        <DropdownMenuTrigger><Menu /></DropdownMenuTrigger>
+                        <DropdownMenuContent>
+    
+                            <DropdownMenuLabel>Signed in</DropdownMenuLabel>
+                            <DropdownMenuItem>{session.user.email}</DropdownMenuItem>
+    
+                            <DropdownMenuSeparator />
+    
+                            <DropdownMenuItem><button onClick={async () => await signOut()}>Sign out</button></DropdownMenuItem>
+    
+                            <DropdownMenuSeparator />                        
+    
+                            <DropdownMenuItem>Wettbewerb hinzufügen</DropdownMenuItem> 
+    
+                        </DropdownMenuContent>
+    
+                    </DropdownMenu>
+                </div>
+            )
+        }else
+        {
+            return (//other user dropdown bar
+
+                <div className="bg-blue-700 text-inherit p-5 pr-16 text-center">
                 
-                <DropdownMenu>
+                    <DropdownMenu>
 
-                    <DropdownMenuTrigger><Menu /></DropdownMenuTrigger>
-                    <DropdownMenuContent>
+                        <DropdownMenuTrigger><Menu /></DropdownMenuTrigger>
+                        <DropdownMenuContent>
 
-                        <DropdownMenuLabel>Signed in</DropdownMenuLabel>
-                        <DropdownMenuItem>{session.user?.email}</DropdownMenuItem>
+                            <DropdownMenuLabel>Signed in</DropdownMenuLabel>
+                            <DropdownMenuItem>{session.user?.email}</DropdownMenuItem>
 
-                        <DropdownMenuSeparator />
+                            <DropdownMenuSeparator />
 
-                        <DropdownMenuItem><button onClick={async () => await signOut()}>Sign out</button></DropdownMenuItem>
+                            <DropdownMenuItem><button onClick={async () => await signOut()}>Sign out</button></DropdownMenuItem>
 
-                        <DropdownMenuSeparator />                        
+                        </DropdownMenuContent>
 
-                        <DropdownMenuItem>Wettbewerb hinzufügen</DropdownMenuItem> 
-
-                    </DropdownMenuContent>
-
-                </DropdownMenu>
-            </div>
-        )
+                    </DropdownMenu>
+                </div>
+            )};
     }
     return (
         <div className="bg-blue-700 text-inherit p-5 pr-16 text-center">
@@ -92,6 +114,8 @@ export function UserInfo() {
                     <DropdownMenuLabel>Not signed in</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem><a href="/login" >Log-in</a></DropdownMenuItem>
+                    <DropdownMenuLabel>Don't have an account?</DropdownMenuLabel>
+                    <DropdownMenuItem><a href="/signup"></a></DropdownMenuItem>
 
                 </DropdownMenuContent>
             </DropdownMenu>
