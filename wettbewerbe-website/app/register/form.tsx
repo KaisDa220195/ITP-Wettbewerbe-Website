@@ -53,14 +53,15 @@ export default function LoginForm() {
 
   const onSubmit = async (dataa: FormData) => {
 
-    const { email, password, name,classs,branch } = dataa;
+    const { email, password, classs,branch } = dataa;
 
     const { data, error } = await authClient.signUp.email({
       email, // user email address
-      password, // user password -> min 8 characters by default
-      name, // user display name
+      password, // user password -> min 8 characters by default // user display name
+      name: "",
       class: classs,
       branch: parseInt(branch),
+      isTeacher: false,
       callbackURL: "/" // a url to redirect to after the user verifies their email (optional)
     }, {
       onRequest: (ctx) => {
@@ -116,34 +117,18 @@ export default function LoginForm() {
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Provide Password</FormLabel>
-              <FormControl>
-                <Input
-                  className="text-black"
-                  placeholder="na"
-                  {...field}
-                  type="text"
-                />
-              </FormControl>
-            </FormItem>
-          )}
-        />
+      
 
         <FormField
           control={form.control}
           name="classs"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Provide Password</FormLabel>
+              <FormLabel> Provide Class</FormLabel>
               <FormControl>
                 <Input
                   className="text-black"
-                  placeholder="6HFET"
+                  placeholder="5AFET"
                   {...field}
                   type="text"
                 />
@@ -156,7 +141,7 @@ export default function LoginForm() {
           name="branch"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Provide Password</FormLabel>
+              <FormLabel>Provide Branch</FormLabel>
               <FormControl>
                 <Input
                   className="text-black"
@@ -169,9 +154,7 @@ export default function LoginForm() {
             </FormItem>
           )}
         />
-
-
-
+        
         <Button
           type="submit"
           className="hover:scale-110 hover:bg-cyan-700"
