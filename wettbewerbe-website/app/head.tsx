@@ -34,6 +34,7 @@ function NavBar() {
         <div className="bg-blue-900 flex justify-around p-5 flex-row">
             <a href="/" className="text-inherit p-5 hover:bg-blue-700 hover:rounded">Wettbewerbe</a>
             <a href="calendar" className="text-inherit p-5 hover:bg-blue-700 hover:rounded">Kalender</a>
+            <a href="addcompetition" className="text-inherit p-5 hover:bg-blue-700 hover:rounded">Add Competition</a>
             <a href="test" className="text-inherit p-5 hover:bg-blue-700 hover:rounded">Test</a>
         </div>
     );
@@ -115,7 +116,7 @@ export function UserInfo() {
                     <DropdownMenuSeparator />
                     <DropdownMenuItem><a href="/login" >Log-in</a></DropdownMenuItem>
                     <DropdownMenuLabel>Don't have an account?</DropdownMenuLabel>
-                    <DropdownMenuItem><a href="/signup"></a></DropdownMenuItem>
+                    <DropdownMenuItem><a href="/register">Sign-up</a></DropdownMenuItem>
 
                 </DropdownMenuContent>
             </DropdownMenu>
