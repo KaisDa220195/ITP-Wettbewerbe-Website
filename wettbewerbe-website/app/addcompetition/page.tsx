@@ -1,7 +1,8 @@
 "use client";
 
+import { addCompetition } from "@/src/db/handleCompetitions";
 
-export default function addCompetition() {
+export default function addCompetitioForm() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
   };
@@ -11,7 +12,8 @@ export default function addCompetition() {
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+    
+    
   };
 
   return (
