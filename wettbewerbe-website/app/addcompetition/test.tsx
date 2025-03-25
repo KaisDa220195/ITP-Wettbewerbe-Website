@@ -17,15 +17,16 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { toast } from "@/hooks/use-toast";
 
 const FormSchema = z.object({
-  email: z.string().email({
-    message: "Invalid email address.",
+  name: z.string().min(3,{
+    message: "Name too short",
   }),
-  password: z.string().min(6, {
-    message: "Password must be at least 6 characters.",
+  description: z.string().min(80, {
+    message: "Description is too short",
   }),
-  name: z.string().min(2, {
+  lastRegistrationDate: z.date(). (2, {
     message: "Password must be at least 6 characters.",
   }),
   classs: z.string().min(2, {
@@ -44,23 +45,18 @@ export default function LoginForm() {
       email: "",
       password: "",
       name: "",
-      classs:"",
-      branch: "1",
     },
   });
 
   const onSubmit = async (dataa: FormData) => {
 
-    const { email, password, classs,branch } = dataa;
-    console.log(1)
+    const { email, password,name } = dataa;
 
     const { data, error } = await authClient.signUp.email({
       email, // user email address
       password, // user password -> min 8 characters by default // user display name
-      name: "",
-      class: classs,
-      branch: parseInt(branch),
-      isTeacher: false,
+      name,
+      isTeacher: true,
       callbackURL: "/" // a url to redirect to after the user verifies their email (optional)
     }, {
       onRequest: (ctx) => {
@@ -123,31 +119,13 @@ export default function LoginForm() {
           name="classs"
           render={({ field }) => (
             <FormItem>
-              <FormLabel> Provide Class</FormLabel>
+              <FormLabel> Provide Short Name</FormLabel>
               <FormControl>
                 <Input
                   className="text-black"
-                  placeholder="5AFET"
+                  placeholder="TEMI"
                   {...field}
                   type="text"
-                />
-              </FormControl>
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="branch"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Provide Branch</FormLabel>
-              <FormControl>
-                <Input
-                  className="text-black"
-                  placeholder="IT"
-                  {...field}
-                  type="number"
-                  
                 />
               </FormControl>
             </FormItem>

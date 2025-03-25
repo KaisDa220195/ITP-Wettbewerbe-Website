@@ -17,7 +17,7 @@ export interface competitionStruct  {
 
 export async function addCompetition(comp:competitionStruct,branches:number[]){
 
-    if((await db.select().from(user).where(eq(user.user_id,comp.user_id))).length != 0){
+    if((await db.select().from(user).where(eq(user.id,comp.user_id))).length != 0){
         const comp_id = (await db.insert(competition).values({
             name: comp.name,
             description: comp.description,
