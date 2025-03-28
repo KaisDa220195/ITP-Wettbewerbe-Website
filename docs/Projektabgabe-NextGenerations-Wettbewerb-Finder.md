@@ -43,12 +43,10 @@
       6. Beziehungen im Schema
    
    3. Front- End
-      
-      1. Übergreifende Funktionen
-      
-      2. Home Page
 
 8. Fazit und Ausblick
+
+9. Mitglieder und Aufgabenverteilung
 
 ## Einführung
 
@@ -126,7 +124,9 @@ Die Videos die wir für die verschiedenen Wettbewerbe gefilmt haben wurden als e
 
 ## Unser Prototyp
 
-Wir haben viel Zeit investiert um eine funktionierende Webseite zu programmieren. Diese soll alle vorher erwähnten Funktionen enthalten. Da es im Moment noch in der Produktion findet, müssen noch manche Funktionen implementiert werden. Die nachfolgenden Informationen dienen zur Visualisierung der kommenden Funktionen. 
+Wir haben viel Zeit investiert um unserer Vision nahe zu kommen. Diese soll alle vorher erwähnten Funktionen enthalten. Da es im Moment noch in der Produktion findet, müssen noch manche Funktionen implementiert werden. Informationen die in den nachfolgenden Bildern zu sehen sind, sind Platzhalter dienen zur Visualisierung der kommenden Funktionen und sind nur Platzhalter. 
+
+Der Code kann unter [GitHub - KaisDa220195/ITP-Wettbewerbe-Website](https://github.com/KaisDa220195/ITP-Wettbewerbe-Website) auf Github besichtigt werden.
 
 ## **Technologien und Bibliotheken**
 
@@ -223,8 +223,6 @@ Das Schema bietet eine strukturierte und normalisierte Datenbankarchitektur zur 
 
 Die Informationen, die in den folgenden Bildern zu sehen sind, sind nur Platzhalter um alle wichtigen Funktionen hier darzustellen.
 
-### Übergreifende Funktionen
-
 Auf jeder Seite sind der Titel mit der Navigationsbar und der Fuß der Webseite mit rechtlichen Informationen zu sehen. Die in der Navigations Bar zu sehende Test Funktion ist wie der Name sagt zum testen verwendet worden und wird im fertigen Produkt nicht enthalten sein.
 
 ![](_img/2025-02-02-15-56-14-image.png)
@@ -249,11 +247,13 @@ Und für Lehrer werden extra Funktionen sichtbar sein, wie das hinzufügen oder 
 
 ![](_img/2025-03-25-16-33-32-image.png)
 
-### Home Page
 
-![](_img/2025-02-02-15-50-29-image.png)
 
-Auf dieser Seite werden die Wettbewerbe mit Karten aufgelistet. Wichtige Informationen können hier schnell abgelesen werden. Jeder dieser Karten wird einen Link beinhalten der zur einer neuen Seite führt wo alle Informationen zu sehen sein werden. Auf dieser Seite wird auch das video zum jeweiligen Wettbewerb zu sehen sein.
+Auf der Home Page werden die Wettbewerbe mit Karten aufgelistet. Wichtige Informationen können hier schnell abgelesen werden. Jeder dieser Karten wird einen Link beinhalten der zur einer neuen Seite führt wo alle Informationen zu sehen sein werden. Auf dieser Seite wird auch das video zum jeweiligen Wettbewerb zu sehen sein.
+
+
+
+
 
 ## **Fazit und Ausblick**
 
@@ -266,3 +266,29 @@ Dieses Projekt hat uns nicht nur technisches Wissen und praktische Erfahrung ver
 Für die Zukunft sehen wir großes Potenzial für die Weiterentwicklung unserer Plattform. Geplante Erweiterungen wie eine verbesserte Such- und Filterfunktion, eine mobile App sowie die Möglichkeit für Schulen, eigene Wettbewerbe direkt über die Plattform zu organisieren, werden den Nutzen unserer Lösung weiter steigern.
 
 Wir sind überzeugt, dass unser Projekt einen wertvollen Beitrag zur Förderung von Bildung, Kreativität und Innovation leistet – heute und in der Zukunft. 
+
+## Mitglieder und Aufgabenverteilung
+
+#### Daniel Kaiser
+
+- Teamleader, Prototyp Entwicklung(Datenbank, Front-End)
+
+- Dokumentation
+
+#### Emil Rubasch
+
+- Front-End Entwicklung
+
+- Dokumentation
+
+#### David Galateanu
+
+- Front-End Entwicklung
+
+- Idee Entwicklung
+
+#### Tim Freudenthaler
+
+- Front-End Entwicklung
+
+- Idee Entwicklung
