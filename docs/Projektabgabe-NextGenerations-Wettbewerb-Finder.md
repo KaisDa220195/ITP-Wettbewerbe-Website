@@ -32,25 +32,21 @@
       
       1. Zentrale Entität:  ` user `
       
-      2. Rollen: `student` und `teacher`
+      2. Wettbewerbe: `competition`
       
-      3. Wettbewerbe: `competition`
+      3. Interessen: `interests`
       
-      4. Interessen: `interests`
+      4. Bevorzugte Zweige: `prefBranch`
       
-      5. Bevorzugte Zweige: `prefBranch`
+      5. Zweige: `branch`
       
-      6. Zweige: `branch`
-      
-      7. Beziehungen im Schema
+      6. Beziehungen im Schema
    
    3. Front- End
       
       1. Übergreifende Funktionen
       
       2. Home Page
-      
-      3. Kalender
 
 8. Fazit und Ausblick
 
@@ -124,6 +120,10 @@ Damit das Video eine möglichst große Zielgruppe erreicht, setzen wir auf versc
 
 - **Schulwebseiten:** Lehrkräfte haben die Möglichkeit, das Video unkompliziert mit ihren Schüler*innen zu teilen.
 
+Die Videos die wir für die verschiedenen Wettbewerbe gefilmt haben wurden als ein Video veröffentlicht und sind mit dem folgenden Link zu finden:
+
+[WettbewerbFinder - Eine Seite für alle Wettbewerbe - YouTube](https://www.youtube.com/watch?v=2_nS1Eq7QBA)
+
 ## Unser Prototyp
 
 Wir haben viel Zeit investiert um eine funktionierende Webseite zu programmieren. Diese soll alle vorher erwähnten Funktionen enthalten. Da es im Moment noch in der Produktion findet, müssen noch manche Funktionen implementiert werden. Die nachfolgenden Informationen dienen zur Visualisierung der kommenden Funktionen. 
@@ -182,35 +182,31 @@ Drizzle ist eine moderne ORM-Lösung (Object-Relational Mapping) für TypeScript
 
 Um unser Datenbank schema übergreiflich darzustellen haben wie dieses Modell generieren lassen:
 
-![](_img/2025-03-25-15-54-51-image.png)
+<img src="_img/2025-03-25-15-54-51-image.png" title="" alt="" width="401">
 
 Das gezeigte Datenbankschema stellt eine relational strukturierte Datenbank dar, die verschiedene Entitäten und ihre Beziehungen modelliert. Hier folgt eine detaillierte Analyse der einzelnen Tabellen und ihrer Verknüpfungen:
 
 ### 1. **Zentrale Entität: `user`**
 
 - Die Tabelle `user` speichert grundlegende Informationen über Nutzer, einschließlich `user_id` (Primärschlüssel), `email` und `password`.
-- Sie dient als zentrale Referenz für andere Tabellen, um Benutzer eindeutig zu identifizieren.
+- Sie dient als zentrale Referenz für andere Tabellen, um Benutzer eindeutig zu identifizieren
+- Sie kommt von der Implementierung von BetterAuth
 
-### 2. **Rollen: `student` und `teacher`**
-
-- `student`: Diese Tabelle enthält `user_id` als Fremdschlüssel, sowie `branch` und `class`, um Studierende bestimmten Zweigen und Klassen zuzuordnen.
-- `teacher`: Enthält `user_id` und `shortName`, um Lehrkräfte mit einer Kurzbezeichnung zu speichern.
-
-### 3. **Wettbewerbe: `competition`**
+### 2. **Wettbewerbe: `competition`**
 
 - Diese Tabelle speichert Informationen zu Wettbewerben, einschließlich `comp_id` (Primärschlüssel), `name`, `description`, `date`, `lowestGrade` und `link`.
 - Der `user_id`-Fremdschlüssel stellt die Verbindung zu dem Benutzer her, der den Wettbewerb organisiert oder einreicht.
 
-### 4. **Interessen: `interests`**
+### 3. **Interessen: `interests`**
 
 - Diese Tabelle stellt eine Beziehung zwischen Benutzern (`user_id`) und Wettbewerben (`comp_id`) her, um Interessen der Nutzer an bestimmten Wettbewerben zu speichern.
 - Die Spalte `date` gibt das Datum der Interessensbekundung an.
 
-### 5. **Bevorzugte Zweige: `prefBranch`**
+### 4. **Bevorzugte Zweige: `prefBranch`**
 
 - Diese Tabelle verknüpft `competition` mit `branch`, um bevorzugte Zweige für bestimmte Wettbewerbe zu speichern.
 
-### 6. **Zweige: `branch`**
+### 5. **Zweige: `branch`**
 
 - Diese Tabelle definiert verschiedene Zweige oder Fachrichtungen in einer Schule anhand von `branch_id` und `name`.
 
@@ -225,7 +221,7 @@ Das Schema bietet eine strukturierte und normalisierte Datenbankarchitektur zur 
 
 ## Front-End
 
-Die Informationen die in den folgenden Bildern zu sehen sind, sind nur Platzhalter um alle wichtigen Funktionen hier darzustellen.
+Die Informationen, die in den folgenden Bildern zu sehen sind, sind nur Platzhalter um alle wichtigen Funktionen hier darzustellen.
 
 ### Übergreifende Funktionen
 
@@ -233,19 +229,25 @@ Auf jeder Seite sind der Titel mit der Navigationsbar und der Fuß der Webseite 
 
 ![](_img/2025-02-02-15-56-14-image.png)
 
-Mit dem Menü Knopf oben rechts kann man sich einloggen:
+Mit dem Menü Knopf oben rechts kann man sich einersteits einloggen oder registrieren oder ausloggen:
 
-![](_img/2025-02-02-16-00-44-image.png)
+![](_img/2025-03-25-16-12-21-image.png)
 
-Der Log-in knopf führt zu einem Formular wo man sich anmelden kann.
-
-![](_img/2025-02-02-16-03-06-image.png)
-
-Oder ausloggen:
+oder
 
 ![](_img/2025-02-02-16-04-15-image.png)
 
+Der Log-in knopf führt zu einem Formular wo man sich anmelden kann.
+
+<img src="_img/2025-02-02-16-03-06-image.png" title="" alt="" width="382">
+
+Unter Sign-Up kann man sich mit einer E-mail, passwort, der Klasse und der Abteilung registrieren.
+
+<img title="" src="_img/2025-03-25-16-24-39-image.png" alt="" width="316">
+
 Und für Lehrer werden extra Funktionen sichtbar sein, wie das hinzufügen oder editieren von Wettbewerben.
+
+![](_img/2025-03-25-16-33-32-image.png)
 
 ### Home Page
 
@@ -253,17 +255,11 @@ Und für Lehrer werden extra Funktionen sichtbar sein, wie das hinzufügen oder 
 
 Auf dieser Seite werden die Wettbewerbe mit Karten aufgelistet. Wichtige Informationen können hier schnell abgelesen werden. Jeder dieser Karten wird einen Link beinhalten der zur einer neuen Seite führt wo alle Informationen zu sehen sein werden. Auf dieser Seite wird auch das video zum jeweiligen Wettbewerb zu sehen sein.
 
-### Kalender
-
-Hier werden in einem Kalender Format alle Fristen für Wettbewerbe sichtbar sein.
-
-![](_img/2025-02-02-17-00-01-image.png)
-
 ## **Fazit und Ausblick**
 
 Mit der Entwicklung dieser Plattform haben wir eine Lösung geschaffen, die Schüler*innen und Schulen eine einfache Möglichkeit bietet, sich über aktuelle Wettbewerbe zu informieren und daran teilzunehmen. Durch eine intuitive Benutzeroberfläche, moderne Technologien und eine nahtlose Integration in bestehende Schulwebsites erleichtert unser Projekt den Zugang zu Wettbewerben und fördert gleichzeitig die aktive Teilnahme.
 
-Neben der technischen Umsetzung haben wir auch einen starken Fokus auf die Motivation der Schüler*innen gelegt. Mit ansprechenden Videos und einer gezielten Verbreitung unserer Inhalte möchten wir möglichst viele junge Menschen dazu inspirieren, sich neuen Herausforderungen zu stellen und ihre Talente weiterzuentwickeln.
+Neben der technischen Umsetzung haben wir auch einen starken Fokus auf die Motivation der Schüler*innen gelegt. Mit ansprechenden Videos und einer gezielten Verbreitung unserer Inhalte möcht en wir möglichst viele junge Menschen dazu inspirieren, sich neuen Herausforderungen zu stellen und ihre Talente weiterzuentwickeln.
 
 Dieses Projekt hat uns nicht nur technisches Wissen und praktische Erfahrung vermittelt, sondern auch unsere Teamarbeit, Organisation und Problemlösungsfähigkeiten gestärkt. Die Entwicklung einer funktionalen und nachhaltigen Lösung erfordert nicht nur Fachwissen, sondern auch Kreativität und eine vorausschauende Denkweise – Fähigkeiten, die wir durch dieses Projekt vertieft haben.
 

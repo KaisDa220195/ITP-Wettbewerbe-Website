@@ -13,7 +13,6 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { endpointServerChangedSubscribe } from 'next/dist/build/swc/generated-native';
 
 export default function Head() {
 
@@ -54,8 +53,8 @@ export function Title() {
 export function UserInfo() {
     const { data: session } = useSession()
 
-    if (session) {
-        if(session.user.isTeacher == true){
+    // if (session) {
+    //     if(session.user.isTeacher == true){
             return (//Teacher dropdown bar
 
                 <div className="bg-blue-700 text-inherit p-5 pr-16 text-center">
@@ -66,7 +65,7 @@ export function UserInfo() {
                         <DropdownMenuContent>
     
                             <DropdownMenuLabel>Signed in</DropdownMenuLabel>
-                            <DropdownMenuItem>{session.user.email}</DropdownMenuItem>
+                            <DropdownMenuItem>{/*session.user.email*/}temi@gmail.com</DropdownMenuItem>
     
                             <DropdownMenuSeparator />
     
@@ -74,51 +73,52 @@ export function UserInfo() {
     
                             <DropdownMenuSeparator />                        
     
-                            <DropdownMenuItem>Wettbewerb hinzufügen</DropdownMenuItem> 
+                            <DropdownMenuItem><a href="/addCompetition">Wettbewerb hinzufügen</a></DropdownMenuItem> 
+                            <DropdownMenuItem></DropdownMenuItem>
     
                         </DropdownMenuContent>
     
                     </DropdownMenu>
                 </div>
-            )
-        }else
-        {
-            return (//other user dropdown bar
+    //         )
+    //     }else
+    //     {
+    //         return (//other user dropdown bar
 
-                <div className="bg-blue-700 text-inherit p-5 pr-16 text-center">
+    //             <div className="bg-blue-700 text-inherit p-5 pr-16 text-center">
                 
-                    <DropdownMenu>
+    //                 <DropdownMenu>
 
-                        <DropdownMenuTrigger><Menu /></DropdownMenuTrigger>
-                        <DropdownMenuContent>
+    //                     <DropdownMenuTrigger><Menu /></DropdownMenuTrigger>
+    //                     <DropdownMenuContent>
 
-                            <DropdownMenuLabel>Signed in</DropdownMenuLabel>
-                            <DropdownMenuItem>{session.user?.email}</DropdownMenuItem>
+    //                         <DropdownMenuLabel>Signed in</DropdownMenuLabel>
+    //                         <DropdownMenuItem>{session.user?.email}</DropdownMenuItem>
 
-                            <DropdownMenuSeparator />
+    //                         <DropdownMenuSeparator />
 
-                            <DropdownMenuItem><button onClick={async () => await signOut()}>Sign out</button></DropdownMenuItem>
+    //                         <DropdownMenuItem><button onClick={async () => await signOut()}>Sign out</button></DropdownMenuItem>
 
-                        </DropdownMenuContent>
+    //                     </DropdownMenuContent>
 
-                    </DropdownMenu>
-                </div>
-            )};
-    }
-    return (
-        <div className="bg-blue-700 text-inherit p-5 pr-16 text-center">
-            <DropdownMenu>
-                <DropdownMenuTrigger><Menu /></DropdownMenuTrigger>
-                <DropdownMenuContent>
-                    <DropdownMenuLabel>Not signed in</DropdownMenuLabel>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem><a href="/login" >Log-in</a></DropdownMenuItem>
-                    <DropdownMenuLabel>Don't have an account?</DropdownMenuLabel>
-                    <DropdownMenuItem><a href="/register">Sign-up</a></DropdownMenuItem>
+    //                 </DropdownMenu>
+    //             </div>
+    //         )};
+    // }
+    // return (
+    //     <div className="bg-blue-700 text-inherit p-5 pr-16 text-center">
+    //         <DropdownMenu>
+    //             <DropdownMenuTrigger><Menu /></DropdownMenuTrigger>
+    //             <DropdownMenuContent>
+    //                 <DropdownMenuLabel>Not signed in</DropdownMenuLabel>
+    //                 <DropdownMenuSeparator />
+    //                 <DropdownMenuItem><a href="/login" >Log-in</a></DropdownMenuItem>
+    //                 <DropdownMenuLabel>Don't have an account?</DropdownMenuLabel>
+    //                 <DropdownMenuItem><a href="/register">Sign-up</a></DropdownMenuItem>
 
-                </DropdownMenuContent>
-            </DropdownMenu>
+    //             </DropdownMenuContent>
+    //         </DropdownMenu>
 
-        </div>
+    //     </div>
     )
 }
